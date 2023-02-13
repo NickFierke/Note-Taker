@@ -1,7 +1,6 @@
 const expressRouter = require('express').Router();
 const dataStore = require('../db/store');
 
-
 expressRouter.get('/notes', (request, response) => {
     dataStore
         .fetchNotes()
@@ -11,14 +10,12 @@ expressRouter.get('/notes', (request, response) => {
         .catch((error) => response.status(500).json(error));
 });
 
-
 expressRouter.post('/notes', (request, response) => {
     dataStore
         .createNote(request.body)
         .then((note) => response.json(note))
         .catch((error) => response.status(500).json(error));
 });
-
 
 expressRouter.delete('/notes/:id', (request, response) => {
     dataStore
